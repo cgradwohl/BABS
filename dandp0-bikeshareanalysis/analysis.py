@@ -183,3 +183,19 @@ display(sample_data.head())
 
 # Verify the dataframe by counting data points matching each of the time features.
 question_3(sample_data)
+
+
+
+# Data Exploration
+trip_data = pd.read_csv('201309_trip_summary.csv')
+
+usage_stats(trip_data)
+
+usage_plot(trip_data, 'subscription_type')
+usage_plot(trip_data, 'duration')
+
+# plot using the filter to make data more useful and understandable
+usage_plot(trip_data, 'duration', ['duration < 60'])
+
+# still need to clean up the presentation, here we corect bin boundaries and edges
+usage_plot(trip_data, 'duration', ['duration < 60'], boundary = 0, bin_width = 5)
