@@ -254,17 +254,47 @@ display(trip_data.head
 
 
 
-# Exploretory analysis with usage_plot() and usage_stats()
-usage_plot(trip_data)
+# Exploretory analysis on Full DataSet -	-	-	-	-	-	-	-
 
+
+# Exploration Stats done here
 usage_stats(trip_data)
 
 
+# Exploration Plot done here
+print 'Duration Plot'
+usage_plot(trip_data, 'duration', ['duration < 60'], boundary = 0, bin_width = 5)
+
+print '\n Number of Trips by Start Year from Subscribers'
+usage_plot(trip_data, 'start_year', ["subscription_type == 'Subscriber'"], n_bins = 3)
+
+print '\n Number of Trips by Start Hour on Weekends'
+usage_plot(trip_data, 'start_hour', ['start_hour < 25', "weekday > 5"], bin_width = 1)
+
+print '\n Number of Trips by Start Hour on Weekends from Subscribers'
+usage_plot(trip_data, 'start_hour', ['start_hour < 25', "weekday > 5", "subscription_type == 'Subscriber'"], bin_width = 1)
+
+print '\n Number of Trips by Location on Weekends'
+usage_plot(trip_data, 'start_city', ["weekday > 5"])
+
 
 # Final Plot 1
-usage_plot(trip_data)
+
+# This plot shows the growth rate of Subscribers over the two year this data is taken from.
+# Year 1 saw approximately 280,000 subscribers, while year 2 obtained appoximately 220,000 subscribers.
+# This means that Bay Area Bike Share had a healthy retention rate of aproximately 79%. This is a nice
+# metric that can help evaluate the sucess of a company.
+print '\n Number of Trips by Start Year from Subscribers'
+usage_plot(trip_data, 'start_year', ["subscription_type == 'Subscriber'"], n_bins = 3)
+
 
 
 
 # Final Plot 2
-usage_plot(trip_data)
+
+# Since the Bay Area Bike Share business model does not depend on subscribers alone, this
+# plot shows the number of trips on weekends by start hour. This plots shows that the majority
+# of trips peak around 3pm on Saturdays and Sundays. This is a good indicator that users are
+# using BABS on weekends thoughout the day during the leisure hours between 11am and 4pm.
+print '\n Number of Trips by Start Hour on Weekends'
+usage_plot(trip_data, 'start_hour', ['start_hour < 25', "weekday > 5"], bin_width = 1)
