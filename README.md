@@ -1,5 +1,6 @@
 
 # Bay Area Bike Share Analysis
+In this project we will wrangle useful data  from an unfamiliar data set and perform exploratory analysis on the data set. Enjoy!
 
 ## Introduction
 
